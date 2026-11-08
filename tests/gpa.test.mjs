@@ -1,0 +1,4 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {calculateGpa,gradePoint} from '../src/gpa.js';
+test('thresholds, zero, invalid and missing scores',()=>{assert.equal(gradePoint(95).points,4);assert.equal(gradePoint(89.99).letter,'B+');assert.equal(gradePoint(0).points,0);for(const v of [null,'',NaN,-1,101])assert.equal(gradePoint(v),null)});
+test('credit-weighted per-course GPA, other users excluded',()=>{const cs=[{id:'a',credits:10},{id:'b',credits:5},{id:'c',credits:5}];const gs=[{course_id:'a',student_id:'s',score:100},{course_id:'a',student_id:'s',score:90},{course_id:'b',student_id:'s',score:0},{course_id:'c',student_id:'other',score:100}];const g=calculateGpa(cs,gs,'s');assert.equal(g.display,'2.67');assert.equal(g.credits,15);assert.equal(g.rows.length,2);assert.equal(calculateGpa(cs,[],'s').display,'—')});

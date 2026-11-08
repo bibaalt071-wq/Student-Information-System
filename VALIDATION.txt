@@ -1,0 +1,15 @@
+SIS server-connected implementation candidate
+Validation date: 2026-11-07
+
+PASS: 16 automated tests (PostgreSQL/PGlite RLS tests, GPA unit tests, DOM tests with mocked Auth API).
+PASS: npm run build (Vite production bundle).
+PASS: npm audit --omit=dev reported 0 known production dependency vulnerabilities at validation time.
+PASS: GitHub Pages workflow validates required public variables before publishing.
+PASS: relative asset base and auth redirect keep repository subpaths.
+PASS: browser displayed the fail-closed, unconfigured setup state.
+
+Not verified: live Supabase Auth/PostgREST/Storage, SMTP delivery, physical Face ID/Touch ID, deployed HTTPS/domain configuration, live multi-device workflows.
+No production Supabase project, Vercel deployment, domain, service key, database password or real student data is included.
+
+The packaged dist/ is deliberately unconfigured. Set the public environment variables and REBUILD before deployment.
+See README_KK.md for setup steps, current scope and operating limitations.
